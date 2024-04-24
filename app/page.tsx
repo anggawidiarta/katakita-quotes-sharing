@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Feed from "@/components/Feed";
 
 export default function Home() {
   return (
@@ -8,10 +9,11 @@ export default function Home() {
         <br className="max-md:hidden" />
         <span className="orange_gradient text-center"> AI-Powered Prompts</span>
       </h1>
-      <p className="desc text-center">
+      <p className="desc text-center text-red-600">
         Promptopia is an open-source AI prompting tool for modern world to
         discover, create and share creative prompts
       </p>
+      {/* <Feed /> */}
     </section>
   );
 }
