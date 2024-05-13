@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.scss";
 import Nav from "@/components/Nav";
 import Feed from "@/components/Feed";
+import Provider from "@/components/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,13 +21,15 @@ export default function RootLayout(props: Props) {
   return (
     <html lang="en">
       <body>
-        <div className="main">
-          <div className="gradient "></div>
-        </div>
-        <main className="app">
-          <Nav />
-          {props.children}
-        </main>
+        <Provider>
+          <div className="main">
+            <div className="gradient "></div>
+          </div>
+          <main className="app">
+            <Nav />
+            {props.children}
+          </main>
+        </Provider>
       </body>
     </html>
   );
