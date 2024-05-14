@@ -3,18 +3,15 @@ import GoogleProvider from "next-auth/providers/google";
 import { connectToDB } from "@/utils/database";
 import User from "@/models/user";
 
-// console.log(process.env.GOOGLE_ID);
-// console.log(process.env.GOOGLE_CLIENT_SECRET);
-
 const handler = nextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID || "",
-      clientSecret: process.env.GOOGLE_SECRET || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
   ],
-
-  async session({ session }) {
+  // @ts-ignore
+  async session({ session }: any) {
     const sessionUser = await User.findOne({ email: session.user.email });
     session.user.id = sessionUser._id.toString();
     return session;
