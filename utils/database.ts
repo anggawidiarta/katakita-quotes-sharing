@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose, { ConnectOptions, mongo } from "mongoose";
 
 let isConnected = false; // track the connection
 
@@ -7,14 +7,13 @@ export const connectToDB = async () => {
 
   if (isConnected) {
     console.log("MongoDB is already connected");
+    return;
   }
 
   try {
     await mongoose.connect(process.env.MONGODB_URI || "", {
-      dbName: "share_prompts",
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+      dbName: "katakita",
+    } as ConnectOptions);
 
     isConnected = true;
 
