@@ -19,7 +19,7 @@ const Nav: React.FC = () => {
   }, []);
 
   return (
-    <nav className="w-full  pt-3 mb-16 flex-between">
+    <nav className="w-full mb-16 flex-between">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src={"/assets/images/comment.png"}
@@ -73,7 +73,7 @@ const Nav: React.FC = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="sm:hidden flex relative">
+      <div className="relative flex sm:hidden">
         {session?.user ? (
           <div className="flex">
             <Image
@@ -104,7 +104,7 @@ const Nav: React.FC = () => {
                 </Link>
                 <button
                   type="button"
-                  className="black_btn w-full"
+                  className="w-full black_btn"
                   onClick={() => signOut()}
                 >
                   Sign Out
