@@ -40,7 +40,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
           <span className="text-base font-semibold text-gray-700 font-satoshi">
             Tag{" "}
             <span className="font-normal text-transparent bg-gradient-to-r from-blue-600 bg-clip-text to-amber-600">
-              (#Quotes, #Motivation, #Prayer, #Bible, #Poetry)
+              (#Quotes, #Motivation, #Poetry)
             </span>
           </span>
           <textarea
