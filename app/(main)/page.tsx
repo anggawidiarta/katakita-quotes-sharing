@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Feed from "@/components/Feed";
+import Feed from "@/components/Feed/Feed";
 import styles from "./page.module.scss";
 
 export default function Home() {

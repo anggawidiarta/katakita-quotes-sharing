@@ -14,7 +14,7 @@ const Error = () => {
         <div className={styles.error__face__mouth}></div>
       </div>
 
-      <h1 className="mt-3 text-2xl font-bold text-center  hover:text-blue-500">
+      <h1 className="mt-3 text-2xl font-bold text-center font-satoshi hover:text-blue-500">
         404 Not Found
       </h1>
     </div>

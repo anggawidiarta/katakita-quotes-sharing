@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.scss";
-import Nav from "@/components/Navbar";
-import Feed from "@/components/Feed";
+import Nav from "@/components/Navbar/Navbar";
+import Feed from "@/components/Feed/Feed";
 import Provider from "@/components/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "KataKita",
-  icons: "/favicon.ico",
+  icons: "/assets/icons/bad.png",
   description: "A Powerful Message App",
 };
 
