@@ -47,8 +47,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
             name=""
             id=""
             value={post.prompt}
-            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
-            placeholder="#Tags"
+            onChange={(e) => setPost({ ...post, tag: e.target.value })}
+            placeholder="# Choose Your Tags"
             className="form_input"
           ></textarea>
         </label>
@@ -60,9 +60,9 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
           <button
             type="submit"
             disabled={submitting}
-            className="px-5 py-1 text-sm text-white rounded-full bg-primary-orange hover:bg-blue-400 transition-all duration-200"
+            className="px-5 py-1 text-sm text-white rounded-full bg-primary-orange hover:bg-blue-400 transition-all duration-[300]"
           >
-            Submit
+            {submitting ? `${type}ing...` : type}
           </button>
         </div>
       </form>
