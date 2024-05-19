@@ -1,15 +1,34 @@
-import React from "react";
+import React, { ChangeEvent, FormEvent } from "react";
 import Link from "next/link";
+
+type Post = {
+  text: string;
+  tag: string;
+};
 
 type FormProps = {
   type: string;
-  post?: any;
-  setPost?: any;
-  submitting?: boolean;
-  handleSubmit?: any;
+  post: Post;
+  setPost: (post: Post) => void;
+  submitting: boolean;
+  handleSubmit: (e: FormEvent) => void;
 };
 
-const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
+const Form: React.FC<FormProps> = ({
+  type,
+  post,
+  setPost,
+  submitting,
+  handleSubmit,
+}) => {
+  const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setPost({ ...post, text: e.target.value });
+  };
+
+  const handleTagChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setPost({ ...post, tag: e.target.value });
+  };
+
   return (
     <section className="flex-col w-full max-w-full flex-start">
       <h1 className="text-left head_text">
@@ -22,21 +41,20 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
         onSubmit={handleSubmit}
         id="form"
       >
-        <label htmlFor="">
+        <label>
           <span className="text-base font-semibold text-gray-700 font-satoshi">
             Your Words or Quotes
           </span>
           <textarea
-            name=""
-            id=""
-            value={post.prompt}
-            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
+            value={post.text}
+            onChange={handleTextChange}
+            required
             placeholder="Write your prompt here..."
             className="form_textarea"
           ></textarea>
         </label>
 
-        <label htmlFor="">
+        <label>
           <span className="text-base font-semibold text-gray-700 font-satoshi">
             Tag{" "}
             <span className="font-normal text-transparent bg-gradient-to-r from-blue-600 bg-clip-text to-amber-600">
@@ -44,10 +62,9 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
             </span>
           </span>
           <textarea
-            name=""
-            id=""
-            value={post.prompt}
-            onChange={(e) => setPost({ ...post, tag: e.target.value })}
+            value={post.tag}
+            onChange={handleTagChange}
+            required
             placeholder="# Choose Your Tags"
             className="form_input"
           ></textarea>
@@ -62,7 +79,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
             disabled={submitting}
             className="px-5 py-1 text-sm text-white rounded-full bg-primary-orange hover:bg-blue-400 transition-all duration-[300]"
           >
-            {submitting ? `${type}ing...` : type}
+            {submitting ? `${type}...` : type}
           </button>
         </div>
       </form>

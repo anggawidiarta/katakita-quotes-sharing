@@ -2,7 +2,12 @@
 import Form from "@/components/Form/Form";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { FormEvent, useState } from "react";
+
+interface Post {
+  text: string;
+  tag: string;
+}
 
 const CreatePage = () => {
   const router = useRouter();
@@ -16,23 +21,27 @@ const CreatePage = () => {
 
   /**
    * Tracks the current post state
-   * @return {{ prompt: string, tag: string }}
+   * @return {{ text: string, tag: string }}
    */
-  const [post, setPost] = useState({ prompt: "", tag: "" });
+  const [post, setPost] = useState<Post>({ text: "", tag: "" });
 
-  const createPost = async (e: any) => {
+  const createPost = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
     try {
-      const response = await fetch("/api/prompt/new", {
+      const response = await fetch("/api/post/new", {
         method: "POST",
         body: JSON.stringify({
-          post: post.prompt,
-          userId: session?.user.id,
+          userId: session?.user?.id,
+          text: post.text,
           tag: post.tag,
         }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+
       if (response.ok) {
         router.push("/");
       }
@@ -44,7 +53,13 @@ const CreatePage = () => {
   };
 
   return (
-    <Form type="Create" post={post} setPost={setPost} submitting={submitting} />
+    <Form
+      type="Create"
+      post={post}
+      setPost={setPost}
+      submitting={submitting}
+      handleSubmit={createPost}
+    />
   );
 };
 
