@@ -1,25 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./Feed.module.scss";
-
 import PostCard from "../PostCard/PostCard";
 
-const PostCardList = ({ data, handleTagClick }: any) => {
+interface Post {
+  _id: string;
+  creator: {
+    username: string;
+  };
+  tag: string;
+  text: string;
+}
+
+interface PostCardListProps {
+  data: Post[];
+  handleTagClick: (tag: string) => void;
+}
+
+const PostCardList: React.FC<PostCardListProps> = ({
+  data,
+  handleTagClick,
+}) => {
   return (
     <div className="mt-16 prompt_layout">
-      {data.map((post) => (
-        <PostCard key={post._id} post={post} />
+      {data.map((post: any) => (
+        <PostCard key={post._id} post={post} handleTagClick={handleTagClick} />
       ))}
     </div>
   );
 };
 
-const Feed = () => {
-  const [allPosts, setAllPosts] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(null);
-  const [searchedResults, setSearchedResults] = useState([]);
+const Feed: React.FC = () => {
+  const [allPosts, setAllPosts] = useState<Post[]>([]);
+  const [searchText, setSearchText] = useState<string>("");
+  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(
+    null
+  );
+  const [searchedResults, setSearchedResults] = useState<Post[]>([]);
 
   const fetchPosts = async () => {
     const response = await fetch("/api/post");
@@ -31,11 +49,35 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
-  // const handleTagClick = (tagName) => {
-  //   setSearchText(tagName);
-  //   const searchResult = filterPrompts(tagName);
-  //   setSearchedResults(searchResult);
-  // };
+  const filterPost = (searchText: string): Post[] => {
+    const regex = new RegExp(searchText, "i"); // 'i' flag for case-insensitive search
+    return allPosts.filter(
+      (item) =>
+        regex.test(item.creator.username) ||
+        regex.test(item.tag) ||
+        regex.test(item.text)
+    );
+  };
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (searchTimeout) clearTimeout(searchTimeout);
+    setSearchText(e.target.value);
+
+    // debounce method
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResult = filterPost(e.target.value);
+        setSearchedResults(searchResult);
+      }, 500)
+    );
+  };
+
+  const handleTagClick = (tagName: string) => {
+    setSearchText(tagName);
+
+    const searchResult = filterPost(tagName);
+    setSearchedResults(searchResult);
+  };
 
   return (
     <section className="feed">
@@ -44,13 +86,16 @@ const Feed = () => {
           type="text"
           placeholder="Search for a tag or a username"
           value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={handleSearchChange}
           className="search_input peer"
         />
       </form>
 
-      {/* {searchText?} */}
-      <PostCardList data={allPosts} />
+      {/* All Posts */}
+      <PostCardList
+        data={searchText ? searchedResults : allPosts}
+        handleTagClick={handleTagClick}
+      />
     </section>
   );
 };
