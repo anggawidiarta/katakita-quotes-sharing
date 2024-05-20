@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Feed.module.scss";
 
-import PostCard from "../PromptCard/PromptCard";
+import PostCard from "../PostCard/PostCard";
 
 const PostCardList = ({ data, handleTagClick }: any) => {
   return (

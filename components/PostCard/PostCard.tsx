@@ -44,10 +44,10 @@ const PostCard: React.FC<PostCardProps> = ({
           />
 
           <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-gray-900">
+            <h3 className="font-semibold text-gray-900 font-satoshi">
               {post.creator.username || ""}
             </h3>
-            <p className="font-inter text-sm text-gray-500">
+            <p className="text-sm text-gray-500 font-inter">
               {post.creator.email || ""}
             </p>
           </div>
@@ -63,7 +63,10 @@ const PostCard: React.FC<PostCardProps> = ({
         </div>
       </div>
 
-      <p className="mt-2">{post.text}</p>
+      <p className="my-4 text-sm text-gray-700 font-satoshi">{post.text}</p>
+      <p className="text-sm cursor-pointer font-inter blue_gradient">
+        {post.tag}
+      </p>
     </div>
   );
 };
