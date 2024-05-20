@@ -38,11 +38,14 @@ const Feed: React.FC = () => {
     null
   );
   const [searchedResults, setSearchedResults] = useState<Post[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchPosts = async () => {
+    setLoading(true);
     const response = await fetch("/api/post");
     const data = await response.json();
     setAllPosts(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -62,21 +65,25 @@ const Feed: React.FC = () => {
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (searchTimeout) clearTimeout(searchTimeout);
     setSearchText(e.target.value);
+    setLoading(true);
 
     // debounce method
     setSearchTimeout(
       setTimeout(() => {
         const searchResult = filterPost(e.target.value);
         setSearchedResults(searchResult);
-      }, 500)
+        setLoading(false);
+      }, 1000)
     );
   };
 
   const handleTagClick = (tagName: string) => {
     setSearchText(tagName);
+    setLoading(true);
 
     const searchResult = filterPost(tagName);
     setSearchedResults(searchResult);
+    setLoading(false);
   };
 
   return (
@@ -92,10 +99,16 @@ const Feed: React.FC = () => {
       </form>
 
       {/* All Posts */}
-      <PostCardList
-        data={searchText ? searchedResults : allPosts}
-        handleTagClick={handleTagClick}
-      />
+      {loading ? (
+        <div className="my-4">
+          <div className={styles.feed__loader}></div>
+        </div>
+      ) : (
+        <PostCardList
+          data={searchText ? searchedResults : allPosts}
+          handleTagClick={handleTagClick}
+        />
+      )}
     </section>
   );
 };
