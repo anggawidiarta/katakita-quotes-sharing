@@ -64,7 +64,10 @@ const PostCard: React.FC<PostCardProps> = ({
       </div>
 
       <p className="my-4 text-sm text-gray-700 font-satoshi">{post.text}</p>
-      <p className="text-sm cursor-pointer font-inter blue_gradient">
+      <p
+        className="text-sm cursor-pointer font-inter blue_gradient"
+        onClick={() => handleTagClick && handleTagClick(post.tag)}
+      >
         {post.tag}
       </p>
     </div>
