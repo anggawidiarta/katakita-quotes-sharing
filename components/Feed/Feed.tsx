@@ -2,7 +2,18 @@
 
 import { useEffect, useState } from "react";
 import styles from "./Feed.module.scss";
-import PromptCard from "../PromptCard/PromptCard";
+
+import PostCard from "../PromptCard/PromptCard";
+
+const PostCardList = ({ data, handleTagClick }: any) => {
+  return (
+    <div className="mt-16 prompt_layout">
+      {data.map((post) => (
+        <PostCard key={post._id} post={post} />
+      ))}
+    </div>
+  );
+};
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -11,7 +22,7 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchPosts = async () => {
-    const response = await fetch("/api/prompt");
+    const response = await fetch("/api/post");
     const data = await response.json();
     setAllPosts(data);
   };
@@ -19,6 +30,12 @@ const Feed = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  // const handleTagClick = (tagName) => {
+  //   setSearchText(tagName);
+  //   const searchResult = filterPrompts(tagName);
+  //   setSearchedResults(searchResult);
+  // };
 
   return (
     <section className="feed">
@@ -32,9 +49,8 @@ const Feed = () => {
         />
       </form>
 
-      <div className="mt-16 prompt_layout">
-        <PromptCard />
-      </div>
+      {/* {searchText?} */}
+      <PostCardList data={allPosts} />
     </section>
   );
 };

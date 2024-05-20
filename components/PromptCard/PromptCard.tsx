@@ -1,10 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
-const PromptCard = () => {
+interface Creator {
+  image?: string;
+  username: string;
+  email: string;
+}
+
+interface Post {
+  creator: Creator;
+  text: string;
+  tag: string;
+}
+
+interface PostCardProps {
+  post: Post;
+  handleTagClick?: (tag: string) => void;
+  handleEdit?: () => void;
+  handleDelete?: () => void;
+}
+
+const PostCard: React.FC<PostCardProps> = ({
+  post,
+  handleTagClick = () => {},
+  handleEdit = () => {},
+  handleDelete = () => {},
+}) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
@@ -12,11 +36,36 @@ const PromptCard = () => {
     <div className="prompt_card">
       <div className="flex items-start justify-between gap-5">
         <div className="flex items-center justify-start flex-1 gap-3 cursor-pointer">
-          <Image src={""} alt="User Image" width={40} height={40} />
+          <Image
+            src={post.creator.image || "/assets/images/placeholder-image.png"}
+            alt="User Image"
+            width={40}
+            height={40}
+          />
+
+          <div className="flex flex-col">
+            <h3 className="font-satoshi font-semibold text-gray-900">
+              {post.creator.username || ""}
+            </h3>
+            <p className="font-inter text-sm text-gray-500">
+              {post.creator.email || ""}
+            </p>
+          </div>
+        </div>
+
+        <div className="copy_btn" onClick={() => {}}>
+          <Image
+            src={"/assets/icons/copy-text-svgrepo-com.svg"}
+            width={12}
+            height={12}
+            alt="Copy Button"
+          />
         </div>
       </div>
+
+      <p className="mt-2">{post.text}</p>
     </div>
   );
 };
 
-export default PromptCard;
+export default PostCard;

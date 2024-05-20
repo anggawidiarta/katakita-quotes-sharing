@@ -1,4 +1,3 @@
-import React from "react";
 import { connectToDB } from "@/utils/database";
 import Post from "@/models/post";
 
