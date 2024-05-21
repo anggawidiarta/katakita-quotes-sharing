@@ -4,6 +4,7 @@ import "@/styles/globals.scss";
 import Nav from "@/components/Navbar/Navbar";
 import Feed from "@/components/Feed/Feed";
 import Provider from "@/components/Provider";
+import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout(props: Props) {
             <Nav />
             {props.children}
           </main>
+          <Footer />
         </Provider>
       </body>
     </html>
