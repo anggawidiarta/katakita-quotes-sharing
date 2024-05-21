@@ -21,7 +21,12 @@ const config: Config = {
         "primary-orange": "#FF5722",
       },
     },
+    // dark: {
+    //   extend: {},
+    // },
   },
   plugins: [],
+  darkMode: "class",
 };
+
 export default config;
