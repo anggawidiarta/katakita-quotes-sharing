@@ -3,7 +3,7 @@ import Post from "@/models/post";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { id: string } }
 ): Promise<NextResponse> => {
   try {
