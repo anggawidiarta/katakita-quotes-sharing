@@ -22,7 +22,7 @@ export default function RootLayout(props: Props) {
     <html lang="en">
       <body>
         <Provider>
-          <main className="app">{props.children}</main>
+          <div>{props.children}</div>
         </Provider>
       </body>
     </html>
