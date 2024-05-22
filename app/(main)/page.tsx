@@ -5,6 +5,7 @@ import styles from "./page.module.scss";
 import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
   return (
     <section className="flex-col w-full flex-center">
       <h1 className="text-center head_text">
