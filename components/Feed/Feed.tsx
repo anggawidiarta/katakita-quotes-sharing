@@ -100,7 +100,7 @@ const Feed: React.FC = () => {
 
       {/* All Posts */}
       {loading ? (
-        <div className="my-4">
+        <div className="my-40">
           <div className={styles.feed__loader}></div>
         </div>
       ) : (

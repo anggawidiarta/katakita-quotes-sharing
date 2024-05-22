@@ -3,8 +3,18 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id?: string; // Add the id property to the user object
+    } & DefaultSession["user"]; // Include the default properties of the user object
+  }
+}
 
 interface Creator {
+  _id: string | undefined;
   image?: string;
   username: string;
   email: string;
@@ -29,13 +39,31 @@ const PostCard: React.FC<PostCardProps> = ({
   handleEdit = () => {},
   handleDelete = () => {},
 }) => {
+  const [copied, setCopied] = useState<boolean | string>("");
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
+
+  const handleProfileClick = () => {
+    if (post.creator._id === session?.user?.id) {
+      return router.push("/profile");
+    }
+    router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
+  };
+
+  const handleCopy = () => {
+    setCopied(post.text);
+    navigator.clipboard.writeText(post.text);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
   return (
     <div className="prompt_card">
       <div className="flex items-start justify-between gap-5">
-        <div className="flex items-center justify-start flex-1 gap-3 cursor-pointer">
+        <div
+          className="flex items-center justify-start flex-1 gap-3 cursor-pointer"
+          onClick={() => {}}
+        >
           <Image
             src={post.creator.image || "/assets/images/placeholder-image.png"}
             alt="User Image"
@@ -53,12 +81,16 @@ const PostCard: React.FC<PostCardProps> = ({
           </div>
         </div>
 
-        <div className="copy_btn" onClick={() => {}}>
+        <div className="copy_btn" onClick={handleCopy}>
           <Image
-            src={"/assets/icons/copy-text-svgrepo-com.svg"}
+            src={
+              copied === post.text
+                ? "/assets/icons/hugeicons--tick-double-03.svg"
+                : "/assets/icons/copy-text-svgrepo-com.svg"
+            }
             width={12}
             height={12}
-            alt="Copy Button"
+            alt={copied === post.text ? "Tick Icon" : "Copy Icon"}
           />
         </div>
       </div>

@@ -45,6 +45,7 @@ const Nav: React.FC = () => {
             >
               Sign Out
             </button>
+
             <Link href={"/profile"}>
               <Image
                 src={session?.user.image || "/assets/images/profile.svg"}
@@ -59,14 +60,16 @@ const Nav: React.FC = () => {
           <React.Fragment>
             {providers &&
               Object.values(providers).map((provider: any) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
+                <>
+                  <button
+                    type="button"
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    className="black_btn"
+                  >
+                    Sign In
+                  </button>
+                </>
               ))}
           </React.Fragment>
         )}
