@@ -13,8 +13,13 @@ $break: 400px;
     box-sizing: content-box;
     transform: translate3d(0, 0, 0);
   }
-  width: 100vw;
+  width: auto;
   height: 100vh;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: $gb;
   &__face {
     width: 300px;
@@ -23,7 +28,7 @@ $break: 400px;
     border-radius: 10px;
     background-color: $wh;
     margin: 0 auto;
-    margin-top: 100px;
+
     @media screen and (max-width: $break) {
       margin-top: 40px;
       transform: scale(0.8);
