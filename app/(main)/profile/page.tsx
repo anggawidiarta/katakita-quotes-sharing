@@ -29,7 +29,15 @@ const ProfilePage = () => {
 
   const handleDelete = async () => {};
 
-  return <Profile />;
+  return (
+    <Profile
+      name={"My"}
+      desc={"Welcome to your personalized profile page"}
+      data={posts}
+      handleEdit={handleEdit}
+      handleDelete={handleDelete}
+    />
+  );
 };
 
 export default ProfilePage;
