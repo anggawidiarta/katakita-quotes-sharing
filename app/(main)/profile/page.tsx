@@ -18,7 +18,6 @@ const ProfilePage: NextPage = () => {
       setLoading(true);
       const response = await fetch(`/api/users/${session?.user.id}/posts`);
       const data = await response.json();
-      console.log(data);
 
       setPosts(data);
       setLoading(false);
