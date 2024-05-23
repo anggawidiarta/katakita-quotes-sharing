@@ -102,6 +102,23 @@ const PostCard: React.FC<PostCardProps> = ({
       >
         {post.tag}
       </p>
+
+      {session?.user.id === post.creator._id && pathName === "/profile" && (
+        <div className="gap-4 pt-3 mt-5 border-t border-gray-100 flex-center">
+          <p
+            className="text-sm cursor-pointer green_gradient"
+            onClick={handleEdit}
+          >
+            Edit
+          </p>
+          <p
+            className="text-sm cursor-pointer orange_gradient"
+            onClick={handleDelete}
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   );
 };
