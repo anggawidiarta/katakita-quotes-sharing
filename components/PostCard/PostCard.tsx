@@ -71,11 +71,11 @@ const PostCard: React.FC<PostCardProps> = ({
             height={40}
           />
 
-          <div className="flex flex-col">
-            <h3 className="font-semibold text-gray-900 font-satoshi">
+          <div className="flex flex-col w-auto">
+            <h3 className="font-semibold text-gray-900 font-satoshi max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
               {post.creator.username || ""}
             </h3>
-            <p className="text-sm text-gray-500 font-inter">
+            <p className="text-sm text-gray-500 font-inter max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
               {post.creator.email || ""}
             </p>
           </div>
