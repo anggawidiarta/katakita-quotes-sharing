@@ -5,25 +5,29 @@ import Profile from "@/components/Profile/Profile";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { data } from "autoprefixer";
+import { NextPage } from "next";
 
-const ProfilePage = () => {
+const ProfilePage: NextPage = () => {
   const { data: session } = useSession();
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const fetchPosts = async () => {
-    // setLoading(true);
-    const response = await fetch(`/api/users/${session?.user.id}/posts`);
-    const data = await response.json();
-    setPosts(data);
-    // setLoading(false);
-  };
+  const [posts, setPosts] = useState<never[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const response = await fetch(`/api/users/${session?.user.id}/posts`);
+      const data = await response.json();
+      console.log(data);
+
+      setPosts(data);
+      setLoading(false);
+    };
+
     if (session?.user.id) {
       fetchPosts();
     }
-  }, []);
+  }, [session?.user.id]);
 
   const handleEdit = async () => {};
 
@@ -34,6 +38,7 @@ const ProfilePage = () => {
       name={"My"}
       desc={"Welcome to your personalized profile page"}
       data={posts}
+      loading={loading}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />
