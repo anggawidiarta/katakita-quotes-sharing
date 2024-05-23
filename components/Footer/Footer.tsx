@@ -1,7 +1,11 @@
+"use client";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React from "react";
 
-const Footer = () => {
+const Footer: React.FC = () => {
+  // test usePathname as to make a conditional footer
+  const isProfile = usePathname() === "/profile";
   return (
     <footer className="relative z-20 bg-[#343F56] dark:bg-black">
       <div className="px-6 py-4 mx-auto sm:px-16 max-w-7xl md:py-8">
