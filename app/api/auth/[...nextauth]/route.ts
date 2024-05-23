@@ -1,7 +1,14 @@
-import nextAuth from "next-auth";
+import nextAuth, { NextAuthOptions } from "next-auth";
+import { Session, User as NextAuthUser } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import User from "@/models/user";
 import { connectToDB } from "@/utils/database";
+
+interface UserProfile {
+  email: string;
+  name: string;
+  picture: string;
+}
 
 const handler = nextAuth({
   providers: [
@@ -11,16 +18,20 @@ const handler = nextAuth({
     }),
   ],
   callbacks: {
-    // @ts-ignore
-    async session({ session }: any) {
-      const sessionUser = await User.findOne({ email: session.user.email });
-      session.user.id = sessionUser._id.toString();
-
+    async session({ session }: { session: Session }) {
+      if (session.user?.email) {
+        await connectToDB();
+        const sessionUser = await User.findOne({ email: session.user.email });
+        if (sessionUser) {
+          session.user.id = sessionUser._id.toString();
+        }
+      }
       return session;
     },
-
-    // @ts-ignore
-    async signIn({ profile }: any) {
+    async signIn({ profile }: { profile?: UserProfile }) {
+      if (!profile) {
+        return false;
+      }
       try {
         await connectToDB();
 
@@ -33,12 +44,15 @@ const handler = nextAuth({
           });
         }
         return true;
-      } catch (error: any) {
-        console.log("Error checking if user exists: ", error.message);
+      } catch (error) {
+        console.log(
+          "Error checking if user exists: ",
+          (error as Error).message
+        );
         return false;
       }
     },
   },
-});
+} as NextAuthOptions);
 
 export { handler as GET, handler as POST };

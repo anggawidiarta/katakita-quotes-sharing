@@ -1,19 +1,28 @@
 "use client";
-import React from "react";
+
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useSession, signIn, signOut, getProviders } from "next-auth/react";
+import React, { useState, useEffect } from "react";
+import {
+  useSession,
+  signIn,
+  signOut,
+  getProviders,
+  ClientSafeProvider,
+} from "next-auth/react";
 
 const Nav: React.FC = () => {
   const { data: session } = useSession();
 
-  const [providers, setProviders] = useState(null);
-  const [toggleDropdown, setToggleDropdown] = useState(false);
+  const [providers, setProviders] = useState<Record<
+    string,
+    ClientSafeProvider
+  > | null>(null);
+  const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
-      const res: any = await getProviders();
+      const res = await getProviders();
       setProviders(res);
     })();
   }, []);
