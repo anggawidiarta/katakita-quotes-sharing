@@ -15,7 +15,7 @@ declare module "next-auth" {
 
 interface Creator {
   _id: string | undefined;
-  image?: string;
+  image: string;
   username: string;
   email: string;
 }
