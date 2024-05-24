@@ -26,7 +26,7 @@ export default function RootLayout(props: Props) {
           <div className="main">
             <div className="gradient "></div>
           </div>
-          <main className="app py-5">
+          <main className="app pt-5 pb-10">
             <Nav />
             {props.children}
           </main>
