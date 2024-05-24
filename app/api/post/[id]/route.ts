@@ -42,3 +42,7 @@ export const GET = async (
     return new NextResponse("Failed to fetch all posts", { status: 500 });
   }
 };
+
+export const PATCH = async (request: NextRequest): Promise<NextResponse> => {};
+
+export const DELETE = async (request: NextRequest): Promise<NextResponse> => {};
