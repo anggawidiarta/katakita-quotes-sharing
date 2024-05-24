@@ -24,9 +24,17 @@ const PostCardList: React.FC<PostCardListProps> = ({
 }) => {
   return (
     <div className="mt-16 prompt_layout">
-      {data.map((post: any) => (
-        <PostCard key={post._id} post={post} handleTagClick={handleTagClick} />
-      ))}
+      {data.length < 1 ? (
+        <div className="text-2xl font-bold">Post Not Found</div>
+      ) : (
+        data.map((post: any) => (
+          <PostCard
+            key={post._id}
+            post={post}
+            handleTagClick={handleTagClick}
+          />
+        ))
+      )}
     </div>
   );
 };
