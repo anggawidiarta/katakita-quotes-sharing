@@ -39,7 +39,8 @@ const Profile: React.FC<ProfileProps> = ({
       </h1>
       <p className="text-left">{desc}</p>
       <div className="mt-10 prompt_layout min-h-[60vh]">
-        {loading ? (
+        {data.length > 0 ? (
+          loading ? (
           <div className="text-2xl font-bold">Loading...</div>
         ) : (
           data.map((post: any) => (
@@ -50,6 +51,9 @@ const Profile: React.FC<ProfileProps> = ({
               handleDelete={() => handleDelete && handleDelete(post)}
             />
           ))
+          )
+        ) : (
+          <div className="text-2xl font-bold text-black">No posts</div>
         )}
       </div>
     </section>
