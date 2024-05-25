@@ -16,7 +16,9 @@ const ProfilePage: NextPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const response = await fetch(`/api/users/${session?.user.id}/posts`);
+      const response = await fetch(`/api/users/${session?.user.id}/posts`, {
+        method: "GET",
+      });
       const data = await response.json();
 
       setPosts(data);
