@@ -113,7 +113,7 @@ const PostCard: React.FC<PostCardProps> = ({
           </p>
           <p
             className="text-sm cursor-pointer orange_gradient"
-            onClick={handleDelete}
+            onClick={() => handleDelete && handleDelete()}
           >
             Delete
           </p>
