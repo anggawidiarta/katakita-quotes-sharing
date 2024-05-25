@@ -15,7 +15,7 @@ const EditPost: NextPage = () => {
   const [submitting, setSubmitting] = useState<boolean>(false);
 
   useEffect(() => {
-    const getPromptDetails = async () => {
+    const getPostDetails = async () => {
       const response = await fetch(`/api/post/${postId}`);
       const data = await response.json();
 
@@ -25,7 +25,7 @@ const EditPost: NextPage = () => {
       });
     };
 
-    if (postId) getPromptDetails();
+    if (postId) getPostDetails();
   }, [postId]);
 
   return (
