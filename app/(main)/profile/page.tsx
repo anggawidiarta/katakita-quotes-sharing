@@ -31,7 +31,9 @@ const ProfilePage: NextPage = () => {
     }
   }, [session?.user.id]);
 
-  const handleEdit = async () => {};
+  const handleEdit = async (post) => {
+    router.push(`/update-post?id=${post._id}`);
+  };
 
   const handleDelete = async () => {};
 
