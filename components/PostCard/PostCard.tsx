@@ -29,7 +29,7 @@ interface Post {
 interface PostCardProps {
   post: Post;
   handleTagClick?: (tag: string) => void;
-  handleEdit?: () => void;
+  handleEdit?: (id: string) => void;
   handleDelete?: () => void;
 }
 
@@ -107,7 +107,7 @@ const PostCard: React.FC<PostCardProps> = ({
         <div className="gap-4 pt-3 mt-5 border-t border-gray-100 flex-center">
           <p
             className="text-sm cursor-pointer green_gradient"
-            onClick={handleEdit}
+            onClick={() => handleEdit && handleEdit(post)}
           >
             Edit
           </p>
