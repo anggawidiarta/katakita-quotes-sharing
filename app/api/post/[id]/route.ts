@@ -43,6 +43,31 @@ export const GET = async (
   }
 };
 
-export const PATCH = async (request: NextRequest): Promise<NextResponse> => {};
+/**
+ * DELETE handler to remove a post.
+ *
+ * This function deletes a post identified by the `id` parameter. If an error
+ * occurs during the process, it logs the error and returns a 500 status response.
+ *
+ * @param {NextRequest} _request - The request object, not used in this handler.
+ * @param {Object} context - The context object containing route parameters.
+ * @param {Object} context.params - The route parameters.
+ * @param {string} context.params.id - The ID of the post to be deleted.
+ *
+ * @returns {Promise<NextResponse>} The response object indicating success or failure.
+ */
+export const DELETE = async (
+  _request: NextRequest,
+  { params }: { params: { id: string } }
+): Promise<NextResponse> => {
+  try {
+    await connectToDB();
 
-export const DELETE = async (request: NextRequest): Promise<NextResponse> => {};
+    await Post.findByIdAndDelete(params.id);
+
+    return new NextResponse("Post deleted successfully", { status: 200 });
+  } catch (error) {
+    console.error("Error deleting post:", error);
+    return new NextResponse("Failed to delete post", { status: 500 });
+  }
+};
