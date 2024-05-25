@@ -25,11 +25,8 @@ export const GET = async (
     // Connect to the database
     await connectToDB();
 
-    // Extract user ID from route parameters
-    const userId = params.id;
-
     // Retrieve posts created by the specified user
-    const posts = await Post.find({ creator: userId }).populate("creator");
+    const posts = await Post.findById(params.id).populate("creator");
 
     // Return the posts in JSON format with a 200 status code
     return new NextResponse(JSON.stringify(posts), {
