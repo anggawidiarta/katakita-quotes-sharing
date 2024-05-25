@@ -35,7 +35,7 @@ const ProfilePage: NextPage = () => {
     router.push(`/update-post?id=${post._id}`);
   };
 
-  const handleDelete = async () => {};
+  const handleDelete = async (post) => {};
 
   return (
     <Profile
