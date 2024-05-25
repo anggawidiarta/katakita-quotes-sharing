@@ -44,6 +44,51 @@ export const GET = async (
 };
 
 /**
+ * PATCH handler to update a post.
+ *
+ * This function updates a post identified by the `id` parameter with the
+ * provided `text` and `tag` from the request body. If the post does not
+ * exist, it returns a 404 status response. On error, it returns a 500
+ * status response.
+ *
+ * @param {NextRequest} request - The request object containing the body with `text` and `tag`.
+ * @param {Object} context - The context object containing route parameters.
+ * @param {Object} context.params - The route parameters.
+ * @param {string} context.params.id - The ID of the post to be updated.
+ *
+ * @returns {Promise<NextResponse>} The response object containing the updated post or an error message.
+ */
+export const PATCH = async (
+  request: NextRequest,
+  { params }: { params: { id: string } }
+): Promise<NextResponse> => {
+  try {
+    const { text, tag }: { text: string; tag: string } = await request.json();
+
+    await connectToDB();
+
+    const existingPost = await Post.findById(params.id);
+
+    if (!existingPost) {
+      return new NextResponse("Post not found", { status: 404 });
+    }
+
+    existingPost.text = text;
+    existingPost.tag = tag;
+
+    await existingPost.save();
+
+    return new NextResponse(JSON.stringify(existingPost), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    console.error("Error updating post:", error);
+    return new NextResponse("Failed to update post", { status: 500 });
+  }
+};
+
+/**
  * DELETE handler to remove a post.
  *
  * This function deletes a post identified by the `id` parameter. If an error
