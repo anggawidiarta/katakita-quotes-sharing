@@ -4,11 +4,12 @@ import React from "react";
 import Profile from "@/components/Profile/Profile";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { data } from "autoprefixer";
 import { NextPage } from "next";
 
 const ProfilePage: NextPage = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const [posts, setPosts] = useState<never[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
