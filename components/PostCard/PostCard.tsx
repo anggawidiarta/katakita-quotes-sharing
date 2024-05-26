@@ -29,7 +29,7 @@ interface Post {
 interface PostCardProps {
   post: Post;
   handleTagClick?: (tag: string) => void;
-  handleEdit?: (id: string) => void;
+  handleEdit?: (post: object) => void;
   handleDelete?: () => void;
 }
 
