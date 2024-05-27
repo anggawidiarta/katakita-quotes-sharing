@@ -69,6 +69,7 @@ const PostCard: React.FC<PostCardProps> = ({
             alt="User Image"
             width={40}
             height={40}
+            onClick={handleProfileClick}
           />
 
           <div className="flex flex-col w-auto">
