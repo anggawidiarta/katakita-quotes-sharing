@@ -29,13 +29,20 @@ const ProfilePage: NextPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
+      try {
       const response = await fetch(`/api/users/${session?.user.id}/posts`, {
         method: "GET",
       });
-      const data = await response.json();
-
+        if (!response.ok) {
+          throw new Error("Failed to fetch posts");
+        }
+        const data: Post[] = await response.json();
       setPosts(data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      } finally {
       setLoading(false);
+      }
     };
 
     if (session?.user.id) {
@@ -43,7 +50,7 @@ const ProfilePage: NextPage = () => {
     }
   }, [session?.user.id]);
 
-  const handleEdit = async (post) => {
+  const handleEdit = async (post: any) => {
     router.push(`/update-post?id=${post._id}`);
   };
 
