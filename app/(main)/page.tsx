@@ -26,8 +26,6 @@ export default function Home() {
           </p>
         </div>
       )}
-      {/* <button className={styles.page__button}>Learn More</button> */}
-      {/* <Feed /> */}
     </section>
   );
 }

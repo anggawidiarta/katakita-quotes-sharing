@@ -5,7 +5,6 @@ import Profile from "@/components/Profile/Profile";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { data } from "autoprefixer";
 import { NextPage } from "next";
 
 interface Post {
@@ -30,18 +29,18 @@ const ProfilePage: NextPage = () => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-      const response = await fetch(`/api/users/${session?.user.id}/posts`, {
-        method: "GET",
-      });
+        const response = await fetch(`/api/users/${session?.user.id}/posts`, {
+          method: "GET",
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch posts");
         }
         const data: Post[] = await response.json();
-      setPosts(data);
+        setPosts(data);
       } catch (error) {
         console.error("Error fetching posts:", error);
       } finally {
-      setLoading(false);
+        setLoading(false);
       }
     };
 
@@ -54,7 +53,7 @@ const ProfilePage: NextPage = () => {
     router.push(`/update-post?id=${post._id}`);
   };
 
-  const handleDelete = async (post) => {};
+  const handleDelete = async (post: any) => {};
 
   return (
     <Profile

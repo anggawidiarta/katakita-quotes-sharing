@@ -1,6 +1,6 @@
 import React from "react";
 import PostCard from "../PostCard/PostCard";
-// import { initializeStringUtils } from "@/utils/capitalize";
+// import { capitalize } from "lodash-es";
 
 interface Creator {
   username: string;
