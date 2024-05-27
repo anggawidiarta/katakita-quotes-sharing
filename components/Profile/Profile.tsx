@@ -1,5 +1,6 @@
 import React from "react";
 import PostCard from "../PostCard/PostCard";
+// import { initializeStringUtils } from "@/utils/capitalize";
 
 interface Creator {
   username: string;
@@ -39,19 +40,17 @@ const Profile: React.FC<ProfileProps> = ({
       </h1>
       <p className="text-left">{desc}</p>
       <div className="mt-10 prompt_layout min-h-[60vh]">
-        {data.length > 0 ? (
-          loading ? (
-            <div className="text-2xl font-bold">Loading...</div>
-          ) : (
-            data.map((post: any) => (
-              <PostCard
-                key={post._id}
-                post={post}
-                handleEdit={() => handleEdit && handleEdit(post)}
-                handleDelete={() => handleDelete && handleDelete(post)}
-              />
-            ))
-          )
+        {loading ? (
+          <div>Loading...</div>
+        ) : data.length > 0 ? (
+          data.map((post: any) => (
+            <PostCard
+              key={post._id}
+              post={post}
+              handleEdit={() => handleEdit && handleEdit(post)}
+              handleDelete={() => handleDelete && handleDelete(post)}
+            />
+          ))
         ) : (
           <div className="text-2xl font-bold text-black">No posts</div>
         )}
