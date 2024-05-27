@@ -8,6 +8,18 @@ import { useRouter } from "next/navigation";
 import { data } from "autoprefixer";
 import { NextPage } from "next";
 
+interface Post {
+  _id: string;
+  creator: {
+    _id: string;
+    email: string;
+    username: string;
+    image: string;
+  };
+  text: string;
+  tag: string;
+}
+
 const ProfilePage: NextPage = () => {
   const router = useRouter();
   const { data: session } = useSession();
