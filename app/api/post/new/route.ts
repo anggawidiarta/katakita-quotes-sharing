@@ -8,7 +8,7 @@ export const POST = async (request: Request): Promise<Response> => {
     // Connect to the database
     await connectToDB();
 
-    // Create a new prompt with the given information
+    // Create a new post with the given information
     const newPost = new Post({
       creator: userId,
       text,
