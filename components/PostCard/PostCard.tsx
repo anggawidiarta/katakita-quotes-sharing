@@ -35,9 +35,9 @@ interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({
   post,
-  handleTagClick = () => {},
-  handleEdit = () => {},
-  handleDelete = () => {},
+  handleTagClick,
+  handleEdit,
+  handleDelete,
 }) => {
   const [copied, setCopied] = useState<boolean | string>("");
   const { data: session } = useSession();
