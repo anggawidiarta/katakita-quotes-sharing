@@ -51,7 +51,7 @@ const Feed: React.FC = () => {
   const fetchPosts = async () => {
     setLoading(true);
     const response = await fetch("/api/post");
-    const data = await response.json();
+    const data: Post[] = await response.json();
     setAllPosts(data);
     setLoading(false);
   };
