@@ -17,9 +17,10 @@ const EditPost: NextPage = () => {
 
   useEffect(() => {
     const getPostDetails = async () => {
-      const response = await fetch(`/api/post/${postId}`);
+      const response = await fetch(`/api/post/${postId}`, {
+        method: "GET",
+      });
       const data = await response.json();
-
       setPost({
         text: data.text,
         tag: data.tag,
