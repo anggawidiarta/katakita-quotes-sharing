@@ -1,5 +1,6 @@
 "use client";
 
+import Form from "@/components/Form/Form";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -29,11 +30,13 @@ const EditPost: NextPage = () => {
   }, [postId]);
 
   return (
-    <div>
-      testtttasdasda dasdasd
-      {post.text}
-      {post.tag}
-    </div>
+    <Form
+      post={post}
+      setPost={setPost}
+      type="Edit"
+      submitting={submitting}
+      handleSubmit={() => {}}
+    />
   );
 };
 
