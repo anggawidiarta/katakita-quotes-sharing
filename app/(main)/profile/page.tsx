@@ -23,7 +23,7 @@ interface Post {
 const ProfilePage: NextPage = () => {
   const router = useRouter();
   const { data: session } = useSession();
-  const [posts, setPosts] = useState<never[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
