@@ -30,13 +30,39 @@ const EditPost: NextPage = () => {
     if (postId) getPostDetails();
   }, [postId]);
 
+  const updatePost = async (e: FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      const response = await fetch(`/api/post/${postId}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          text: post.text,
+          tag: post.tag,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        router.push("/profile");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <Form
       post={post}
       setPost={setPost}
       type="Edit"
       submitting={submitting}
-      handleSubmit={() => {}}
+      handleSubmit={updatePost}
     />
   );
 };
