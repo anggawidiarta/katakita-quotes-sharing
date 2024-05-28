@@ -67,8 +67,9 @@ const PostCard: React.FC<PostCardProps> = ({
           <Image
             src={post.creator.image || "/assets/images/placeholder-image.png"}
             alt="User Image"
-            width={40}
-            height={40}
+            className="rounded-full object-contain"
+            width={48}
+            height={48}
             onClick={handleProfileClick}
           />
 
