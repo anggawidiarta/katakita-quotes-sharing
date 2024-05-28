@@ -76,7 +76,7 @@ const PostCard: React.FC<PostCardProps> = ({
       <div className="flex items-start justify-between gap-5">
         <div
           className="flex items-center justify-start flex-1 gap-3 cursor-pointer"
-          onClick={() => {}}
+          onClick={handleProfileClick}
         >
           <Image
             src={post.creator.image || "/assets/images/placeholder-image.png"}
