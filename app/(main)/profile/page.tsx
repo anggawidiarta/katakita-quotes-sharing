@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Profile from "@/components/Profile/Profile";
-import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { NextPage } from "next";
