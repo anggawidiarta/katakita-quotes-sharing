@@ -43,13 +43,13 @@ const Nav: React.FC = () => {
       {/* Desktop Navigation */}
       <div className="hidden sm:flex">
         {session?.user ? (
-          <div className="flex gap-3 md:gap-5">
+          <div className="flex gap-3 md:gap-5 items-center">
             <Link href={"/create-post"} className="black_btn">
               Create Post
             </Link>
             <button
               type="button"
-              className="outline_btn "
+              className="outline_btn"
               onClick={() => signOut()}
             >
               Sign Out
