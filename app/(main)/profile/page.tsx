@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { NextPage } from "next";
 
+// Define the type for the Post
 interface Post {
   _id: string;
   creator: {
@@ -19,6 +20,11 @@ interface Post {
   tag: string;
 }
 
+/**
+ * ProfilePage component displays the user's profile with their posts.
+ *
+ * @returns {JSX.Element} The ProfilePage component.
+ */
 const ProfilePage: NextPage = () => {
   const router = useRouter();
   const { data: session } = useSession();
@@ -26,6 +32,9 @@ const ProfilePage: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+/**
+     * Fetches the posts for the logged-in user.
+     */
     const fetchPosts = async () => {
       setLoading(true);
       try {
@@ -49,6 +58,11 @@ const ProfilePage: NextPage = () => {
     }
   }, [session?.user.id]);
 
+  /**
+   * Handles editing a post.
+   *
+   * @param {Post} post - The post to be edited.
+   */
   const handleEdit = async (post: any) => {
     router.push(`/update-post?id=${post._id}`);
   };
