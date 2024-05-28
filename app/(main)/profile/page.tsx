@@ -53,7 +53,25 @@ const ProfilePage: NextPage = () => {
     router.push(`/update-post?id=${post._id}`);
   };
 
-  const handleDelete = async (post: any) => {};
+  /**
+   * Handles deleting a post.
+   *
+   * @param {Post} post - The post to be deleted.
+   */
+  const handleDelete = async (post: any) => {
+    try {
+      const response = await fetch(`/api/post/${post._id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete post");
+      }
+      const filteredPosts = posts.filter((p) => p._id !== post._id);
+      setPosts(filteredPosts);
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
 
   return (
     <Profile
