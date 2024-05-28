@@ -33,11 +33,11 @@ const Profile: React.FC<ProfileProps> = ({
 }) => {
   return (
     <section className="w-full">
-      <h1 className="text-left head_text">
+      <h1 className="text-left head_text !merriweather-bold">
         <span className="blue_gradient">{name} </span>
         Profile
       </h1>
-      <p className="text-left">{desc}</p>
+      <p className="text-2xl tracking-wide text-left capitalize roboto-medium">{desc}</p>
       <div className="mt-10 prompt_layout min-h-[60vh]">
         {loading ? (
           <div>Loading...</div>
