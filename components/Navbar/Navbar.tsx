@@ -58,9 +58,9 @@ const Nav: React.FC = () => {
             <Link href={"/profile"}>
               <Image
                 src={session?.user.image || "/assets/images/profile.svg"}
-                width={37}
-                height={37}
-                className="rounded-full"
+                width={48}
+                height={48}
+                className="rounded-full ring-offset-2 ring-1 ring-violet-500"
                 alt="profile"
               />
             </Link>
