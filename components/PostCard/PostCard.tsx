@@ -88,10 +88,10 @@ const PostCard: React.FC<PostCardProps> = ({
           />
 
           <div className="flex flex-col w-auto">
-            <h3 className="font-semibold text-gray-900 font-satoshi max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
+            <h3 className=" text-gray-900 text-[16px] merriweather-bold max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate tracking-wide">
               {post.creator.username || ""}
             </h3>
-            <p className="text-sm text-gray-500 font-inter max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
+            <p className=" text-gray-500 roboto-light text-[12px] max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
               {post.creator.email || ""}
             </p>
           </div>
@@ -111,24 +111,26 @@ const PostCard: React.FC<PostCardProps> = ({
         </div>
       </div>
 
-      <p className="my-4 text-sm text-gray-700 font-satoshi">{post.text}</p>
+      <p className="my-4 text-sm text-gray-700 roboto-regular text-[14px]">
+        {post.text}
+      </p>
       <p
-        className="text-sm cursor-pointer font-inter blue_gradient"
+        className="cursor-pointer !roboto-thin text-[12px] blue_gradient"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         {post.tag}
       </p>
 
       {session?.user.id === post.creator._id && pathName === "/profile" && (
-        <div className="gap-4 pt-3 mt-5 border-t border-gray-100 flex-center">
+        <div className="gap-4 mt-5 border-t border-gray-100 flex-center">
           <p
-            className="text-sm cursor-pointer green_gradient"
+            className="text-sm cursor-pointer roboto-medium green_gradient"
             onClick={() => handleEdit && handleEdit(post)}
           >
             Edit
           </p>
           <p
-            className="text-sm cursor-pointer orange_gradient"
+            className="text-sm cursor-pointer roboto-medium orange_gradient"
             onClick={() => handleDelete && handleDelete(post)}
           >
             Delete
