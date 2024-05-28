@@ -13,6 +13,7 @@ declare module "next-auth" {
   }
 }
 
+// Define the Creator interface
 interface Creator {
   _id: string | undefined;
   image: string;
@@ -26,13 +27,20 @@ interface Post {
   tag: string;
 }
 
+// Define the PostCardProps interface
 interface PostCardProps {
   post: Post;
   handleTagClick?: (tag: string) => void;
-  handleEdit?: (post: object) => void;
-  handleDelete?: () => void;
+  handleEdit?: (post: Post) => void;
+  handleDelete?: (post: Post) => void;
 }
 
+/**
+ * PostCard component displays a single post with options to edit, delete, and view the creator's profile.
+ *
+ * @param {PostCardProps} props - The properties passed to the component.
+ * @returns {JSX.Element} The PostCard component.
+ */
 const PostCard: React.FC<PostCardProps> = ({
   post,
   handleTagClick,
