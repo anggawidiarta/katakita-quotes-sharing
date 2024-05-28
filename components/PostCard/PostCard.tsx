@@ -48,7 +48,9 @@ const PostCard: React.FC<PostCardProps> = ({
     if (post.creator._id === session?.user?.id) {
       return router.push("/profile");
     }
-    router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
+    return router.push(
+      `/profile/${post.creator._id}?name=${post.creator.username}`
+    );
   };
 
   const handleCopy = () => {
