@@ -21,6 +21,7 @@ interface Creator {
   email: string;
 }
 
+// Define the Post interface
 interface Post {
   creator: Creator;
   text: string;
@@ -52,6 +53,9 @@ const PostCard: React.FC<PostCardProps> = ({
   const pathName = usePathname();
   const router = useRouter();
 
+  /**
+   * Handles the profile click event to navigate to the profile page.
+   */
   const handleProfileClick = () => {
     if (post.creator._id === session?.user?.id) {
       return router.push("/profile");
