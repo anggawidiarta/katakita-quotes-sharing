@@ -84,7 +84,6 @@ const PostCard: React.FC<PostCardProps> = ({
             className="rounded-full object-contain"
             width={48}
             height={48}
-            onClick={handleProfileClick}
           />
 
           <div className="flex flex-col w-auto">
