@@ -31,7 +31,7 @@ const ProfilePage: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-/**
+    /**
      * Fetches the posts for the logged-in user.
      */
     const fetchPosts = async () => {
