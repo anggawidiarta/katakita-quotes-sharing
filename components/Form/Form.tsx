@@ -31,10 +31,10 @@ const Form: React.FC<FormProps> = ({
 
   return (
     <section className="flex-col w-full max-w-full flex-start">
-      <h1 className="text-left head_text">
-        <span className="blue_gradient">{type} Post</span>
+      <h1 className="text-left head_text !text-primary-black !font-montserrat">
+        <span className="yellow_gradient">{type}</span> Post
       </h1>
-      <p className="max-w-md text-left desc">{`${type} and share amazing prompts with the world, and let your imagination run wild with any AI-powered platform`}</p>
+      <p className="max-w-xl text-left desc w-3/4">{`${type} and share inspiring quotes with the world, and let your imagination soar with our community-driven platform`}</p>
 
       <form
         className="flex flex-col w-full max-w-2xl mt-10 glassmorphism gap-7"
@@ -55,9 +55,9 @@ const Form: React.FC<FormProps> = ({
         </label>
 
         <label>
-          <span className="text-base font-semibold text-gray-700 font-satoshi">
+          <span className="text-base font-semibold text-gray-700 font-montserrat">
             Tag{" "}
-            <span className="font-normal text-transparent bg-gradient-to-r from-blue-600 bg-clip-text to-amber-600">
+            <span className="font-normal text-sm font-montserrat text-gray-600">
               (#Quotes, #Motivation, #Poetry)
             </span>
           </span>
@@ -77,7 +77,7 @@ const Form: React.FC<FormProps> = ({
           <button
             type="submit"
             disabled={submitting}
-            className="px-5 py-1 text-sm text-white rounded-full bg-primary-orange hover:bg-blue-400 transition-all duration-[300]"
+            className="px-5 py-1 text-sm text-black rounded-full bg-[#ffd01c] hover:bg-[#251609] hover:text-[#f5fdfc] transition-all duration-300"
           >
             {submitting ? `${type}...` : type}
           </button>
