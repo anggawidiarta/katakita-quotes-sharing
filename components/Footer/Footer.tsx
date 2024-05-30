@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   // test usePathname as to make a conditional footer
   const isProfile = usePathname() === "/profile";
   return (
-    <footer className="relative z-20 bg-[#343F56] dark:bg-black mt-7">
+    <footer className="relative z-20 bg-[#fdd01c]  mt-7">
       <div className="px-6 py-4 mx-auto sm:px-16 max-w-7xl md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a
