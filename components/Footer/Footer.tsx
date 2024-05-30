@@ -47,9 +47,10 @@ const Footer: React.FC = () => {
             </li>
           </ul>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span className="block text-sm text-white sm:text-center dark:text-gray-400">
-          © 2023{" "}
+        <hr className="my-6 border-[#251609] border-2 rounded-full sm:mx-auto lg:my-8" />
+        <span className="block text-sm font-montserrat text-[#251609] sm:text-center dark:text-gray-400">
+          © {new Date().getFullYear()}
+          {/* TODO: change href*/}
           <a href="https://flowbite.com/" className="hover:underline">
             KataKita™
           </a>
