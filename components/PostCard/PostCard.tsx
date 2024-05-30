@@ -91,7 +91,7 @@ const PostCard: React.FC<PostCardProps> = ({
             <h3 className=" text-gray-900 text-[16px] merriweather-bold max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate tracking-wide">
               {capitalCase(post.creator.username) || ""}
             </h3>
-            <p className=" text-gray-500 roboto-light text-[12px] max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
+            <p className=" text-gray-500 font-montserrat tracking-tight font-normal text-[12px] max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
               {post.creator.email || ""}
             </p>
           </div>
@@ -111,11 +111,11 @@ const PostCard: React.FC<PostCardProps> = ({
         </div>
       </div>
 
-      <p className="my-4 text-sm text-gray-700 roboto-regular text-[14px]">
+      <p className="my-4 text-sm text-gray-700 font-montserrat font-medium text-[14px] whitespace-pre-wrap">
         {post.text}
       </p>
       <p
-        className="cursor-pointer !roboto-thin text-[12px] blue_gradient"
+        className="cursor-pointer !font-montserrat !tracking-tight text-[12px] blue_gradient"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         {post.tag}
