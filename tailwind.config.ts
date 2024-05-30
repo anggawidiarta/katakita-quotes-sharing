@@ -12,10 +12,16 @@ const config: Config = {
         "2xs": "375px",
         xs: "480px",
       },
+      textColor: {
+        "primary-black": "#251609",
+        "primary-yellow": "#FDD01C",
+        "primary-white": "#F5FDFC",
+      },
       fontFamily: {
         satoshi: ["Satoshi", "sans-serif"],
         inter: ["Inter", "sans-serif"],
         playfair: ["PlayfairDisplay", "serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
