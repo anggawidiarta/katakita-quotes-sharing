@@ -5,6 +5,7 @@ import Nav from "@/components/Navbar/Navbar";
 import Feed from "@/components/Feed/Feed";
 import Provider from "@/components/Provider";
 import Footer from "@/components/Footer/Footer";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
