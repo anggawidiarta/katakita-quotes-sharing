@@ -3,6 +3,7 @@ import Image from "next/image";
 import Feed from "@/components/Feed/Feed";
 import styles from "./page.module.scss";
 import { useSession } from "next-auth/react";
+import { capitalCase } from "capital-case";
 
 export default function Home() {
   const { data: session } = useSession();
