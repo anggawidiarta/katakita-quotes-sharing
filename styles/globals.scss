@@ -497,7 +497,7 @@
   }
 
   .glassmorphism {
-    @apply rounded-xl border border-gray-200 bg-white/20  backdrop-blur p-5;
+    @apply rounded-xl border border-[rgba(37,22,9,0.25)] bg-white/20  backdrop-blur-lg p-5;
     box-shadow: inset 10px -50px 94px 0 rgb(199 199 199 / 20%);
   }
 
@@ -534,7 +534,7 @@
 
   /* PromptCard Component */
   .prompt_card {
-    @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+    @apply flex-1 break-inside-avoid rounded-lg border border-[rgba(37,22,9,0.25)] hover:border-[rgba(253,208,28,0.75)] transition-all duration-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] shadow-sm w-full h-fit;
   }
 
   .flex-center {
