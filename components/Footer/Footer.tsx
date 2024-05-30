@@ -20,11 +20,11 @@ const Footer: React.FC = () => {
               height={32}
               alt="Logo"
             />
-            <span className="self-center text-2xl font-semibold text-white whitespace-nowrap">
+            <span className="self-center font-montserrat text-2xl font-semibold text-[#251609] whitespace-nowrap">
               KataKita
             </span>
           </a>
-          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-gray-400">
+          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium font font-montserrat text-[#251609] sm:mb-0 dark:text-gray-400">
             <li>
               <a href="#" className="hover:underline me-4 md:me-6">
                 About
