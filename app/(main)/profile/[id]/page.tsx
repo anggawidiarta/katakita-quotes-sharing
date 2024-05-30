@@ -34,7 +34,6 @@ const UserProfile: NextPage<UserProfileProps> = ({
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        console.log(params.id);
         const response = await fetch(`/api/users/${params?.id}/posts`, {
           method: "GET",
         });
