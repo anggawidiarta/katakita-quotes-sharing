@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { DefaultSession } from "next-auth";
+import { capitalCase } from "capital-case";
 
 declare module "next-auth" {
   interface Session {
@@ -88,7 +89,7 @@ const PostCard: React.FC<PostCardProps> = ({
 
           <div className="flex flex-col w-auto">
             <h3 className=" text-gray-900 text-[16px] merriweather-bold max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate tracking-wide">
-              {post.creator.username || ""}
+              {capitalCase(post.creator.username) || ""}
             </h3>
             <p className=" text-gray-500 roboto-light text-[12px] max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
               {post.creator.email || ""}
