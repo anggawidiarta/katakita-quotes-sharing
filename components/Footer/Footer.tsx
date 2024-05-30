@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
         <span className="block text-sm text-white sm:text-center dark:text-gray-400">
           © 2023{" "}
           <a href="https://flowbite.com/" className="hover:underline">
-            Flowbite™
+            KataKita™
           </a>
           . All Rights Reserved.
         </span>
