@@ -68,7 +68,7 @@ const UserProfile: NextPage<UserProfileProps> = ({
   return (
     <Profile
       name={userName ?? ""}
-      desc={`Welcome to ${userName}'s profile page`}
+      desc={`Welcome to the vibrant and inspiring profile page of ${userName}, where you can discover their favorite quotes, wisdom, and heartfelt contributions.`}
       data={userPosts}
       loading={loading}
       handleEdit={handleEdit}
