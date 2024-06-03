@@ -4,9 +4,9 @@ import Form from "@/components/Form/Form";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, Suspense, useEffect, useState } from "react";
 
-const EditPost: NextPage = () => {
+const EditPost = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const postId = searchParams.get("id");
@@ -66,4 +66,12 @@ const EditPost: NextPage = () => {
   );
 };
 
-export default EditPost;
+const UpdatePost: NextPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <EditPost />;
+    </Suspense>
+  );
+};
+
+export default UpdatePost;
