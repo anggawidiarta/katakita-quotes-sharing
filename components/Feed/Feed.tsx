@@ -59,7 +59,7 @@ const Feed: React.FC = () => {
           throw new Error("Failed to fetch posts");
         }
         const data: Post[] = await response.json();
-        setAllPosts(data);
+        setAllPosts((prev) => (prev = data));
       } catch (error) {
         console.error("Error fetching posts:", error);
       } finally {
