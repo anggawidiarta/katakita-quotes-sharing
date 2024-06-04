@@ -12,7 +12,6 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
       headers: {
         "Content-Type": "application/json",
       },
-      nextConfig: { basePath: "/api/post" },
     });
   } catch (error) {
     console.error("Error fetching posts:", error);
