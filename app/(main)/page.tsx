@@ -4,8 +4,9 @@ import Feed from "@/components/Feed/Feed";
 import styles from "./page.module.scss";
 import { useSession } from "next-auth/react";
 import { capitalCase } from "capital-case";
+import { NextPage } from "next";
 
-export default function Home() {
+const Home: NextPage = () => {
   const { data: session } = useSession();
   return (
     <section className="flex-col w-full flex-center">
@@ -33,4 +34,6 @@ export default function Home() {
       )}
     </section>
   );
-}
+};
+
+export default Home;
