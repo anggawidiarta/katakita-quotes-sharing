@@ -6,7 +6,7 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
   try {
     await connectToDB();
 
-    const posts = await Post.find().populate("creator");
+    const posts = await Post.find({}).populate("creator");
     return new NextResponse(JSON.stringify(posts), {
       status: 200,
     });
