@@ -9,6 +9,9 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
     const posts = await Post.find({}).populate("creator");
     return new NextResponse(JSON.stringify(posts), {
       status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   } catch (error) {
     console.error("Error fetching posts:", error);

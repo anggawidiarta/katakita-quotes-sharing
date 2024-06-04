@@ -52,12 +52,13 @@ const Feed = () => {
   );
   const [searchedResults, setSearchedResults] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  noStore();
-  router.refresh();
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
+        noStore();
+        router.refresh();
         const response = await fetch("/api/post", {
           method: "GET",
         });
