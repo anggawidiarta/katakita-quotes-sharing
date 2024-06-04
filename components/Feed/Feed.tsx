@@ -58,9 +58,6 @@ const Feed = () => {
           method: "GET",
           cache: "no-store",
         });
-        if (!response.ok) {
-          throw new Error("Failed to fetch posts");
-        }
         const data: Post[] = await response.json();
         setAllPosts(data);
       } catch (error) {
