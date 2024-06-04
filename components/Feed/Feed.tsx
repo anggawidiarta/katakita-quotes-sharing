@@ -4,6 +4,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import styles from "@/components/Feed/Feed.module.scss";
 import PostCard from "@/components/PostCard/PostCard";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface Post {
   _id: string;
@@ -42,6 +43,7 @@ const PostCardList: React.FC<PostCardListProps> = ({
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState<Post[]>([]);
+  const router = useRouter();
   const { data: session } = useSession();
   const [searchText, setSearchText] = useState<string>("");
   const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(
@@ -51,6 +53,7 @@ const Feed = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    router.refresh();
     const fetchPosts = async () => {
       setLoading(true);
       try {
