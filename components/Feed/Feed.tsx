@@ -52,7 +52,8 @@ const Feed = () => {
   );
   const [searchedResults, setSearchedResults] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
+  noStore();
+  router.refresh();
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
@@ -69,9 +70,6 @@ const Feed = () => {
       }
     };
     if (session?.user.id) {
-      noStore();
-      router.refresh();
-
       fetchPosts();
     }
   }, [router, session?.user.id]);
