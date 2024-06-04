@@ -59,7 +59,7 @@ const Feed = () => {
       try {
         const response = await fetch("/api/post", {
           method: "GET",
-          cache: "no-store",
+          next: { revalidate: 3600 },
         });
         const data: Post[] = await response.json();
         setAllPosts(data);
