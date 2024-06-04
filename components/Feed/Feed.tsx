@@ -3,6 +3,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./Feed.module.scss";
 import PostCard from "../PostCard/PostCard";
+import { useSession } from "next-auth/react";
 
 interface Post {
   _id: string;
@@ -41,6 +42,7 @@ const PostCardList: React.FC<PostCardListProps> = ({
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState<Post[]>([]);
+  const { data: session } = useSession();
   const [searchText, setSearchText] = useState<string>("");
   const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(
     null
@@ -53,7 +55,6 @@ const Feed = () => {
       setLoading(true);
       try {
         const response = await fetch("/api/post/", {
-          cache: "no-store",
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -70,8 +71,10 @@ const Feed = () => {
         setLoading(false);
       }
     };
-    fetchPosts();
-  }, []);
+    if (session?.user.id) {
+      fetchPosts();
+    }
+  }, [session?.user.id]);
 
   const filterPost = (searchText: string): Post[] => {
     const regex = new RegExp(searchText, "i"); // 'i' flag for case-insensitive search
