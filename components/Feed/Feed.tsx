@@ -54,6 +54,10 @@ const Feed: React.FC = () => {
       try {
         const response = await fetch("/api/post", {
           method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         });
         if (!response.ok) {
           throw new Error("Failed to fetch posts");
