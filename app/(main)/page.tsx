@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
 import Feed from "@/components/Feed/Feed";
-import styles from "./page.module.scss";
 import { useSession } from "next-auth/react";
 import { capitalCase } from "capital-case";
 import { NextPage } from "next";
