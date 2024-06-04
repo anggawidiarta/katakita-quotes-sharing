@@ -52,16 +52,13 @@ const Feed = () => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const response = await fetch(
-          "https://katakita-quotes-sharing.vercel.app/api/post",
-          {
-            method: "GET",
-            cache: "no-store",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch("/api/post/", {
+          cache: "no-store",
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch posts");
         }
