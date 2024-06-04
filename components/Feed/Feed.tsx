@@ -72,7 +72,7 @@ const Feed = () => {
     if (session?.user.id) {
       fetchPosts();
     }
-  }, [session?.user.id]);
+  }, [router, session?.user.id]);
 
   // test post
   console.log(allPosts);
