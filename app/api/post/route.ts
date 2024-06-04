@@ -6,7 +6,7 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
   try {
     await connectToDB();
 
-    const posts = await Post.find({ creator: { $ne: null } }).populate(
+    const posts = await Post.find().populate(
       "creator"
     );
     return new NextResponse(JSON.stringify(posts), {
