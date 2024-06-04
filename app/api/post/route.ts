@@ -12,6 +12,7 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        'get': 'post'
         
       },
     });
