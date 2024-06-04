@@ -39,7 +39,7 @@ const PostCardList: React.FC<PostCardListProps> = ({
   );
 };
 
-const Feed: React.FC = () => {
+const Feed = () => {
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [searchText, setSearchText] = useState<string>("");
   const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(
@@ -56,9 +56,6 @@ const Feed: React.FC = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "Cache-Control":
-              "no-store, no-cache, must-revalidate, proxy-revalidate",
-            Pragma: "no-cache",
           },
         });
         if (!response.ok) {
@@ -137,3 +134,4 @@ const Feed: React.FC = () => {
 };
 
 export default Feed;
+
