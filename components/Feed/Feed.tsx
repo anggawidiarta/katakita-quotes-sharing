@@ -50,12 +50,19 @@ const Feed: React.FC = () => {
 
   const fetchPosts = async () => {
     setLoading(true);
-    const response = await fetch("/api/post");
-    const data: Post[] = await response.json();
-    setAllPosts(data);
-    setLoading(false);
+    try {
+      const response = await fetch("/api/post");
+      if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+      }
+      const data: Post[] = await response.json();
+      setAllPosts(data);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    } finally {
+      setLoading(false);
+    }
   };
-
   useEffect(() => {
     fetchPosts();
   }, []);
