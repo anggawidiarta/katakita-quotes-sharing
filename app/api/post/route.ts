@@ -16,8 +16,6 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
         "Cache-Control":
           "no-store, no-cache, must-revalidate, proxy-revalidate",
         Pragma: "no-cache",
-        Expires: "0",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
   } catch (error) {
