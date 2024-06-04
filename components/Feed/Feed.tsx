@@ -5,6 +5,7 @@ import styles from "@/components/Feed/Feed.module.scss";
 import PostCard from "@/components/PostCard/PostCard";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
 
 interface Post {
   _id: string;
@@ -53,13 +54,11 @@ const Feed = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    router.refresh();
     const fetchPosts = async () => {
       setLoading(true);
       try {
         const response = await fetch("/api/post", {
           method: "GET",
-          next: { revalidate: 3600 },
         });
         const data: Post[] = await response.json();
         setAllPosts(data);
@@ -70,6 +69,9 @@ const Feed = () => {
       }
     };
     if (session?.user.id) {
+      noStore();
+      router.refresh();
+
       fetchPosts();
     }
   }, [router, session?.user.id]);
