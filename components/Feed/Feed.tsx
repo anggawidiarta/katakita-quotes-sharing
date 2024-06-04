@@ -57,8 +57,8 @@ const Feed = () => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        noStore();
-        router.refresh();
+        // noStore();
+        // router.refresh();
         const response = await fetch(
           `api/post?timestamp=${new Date().getTime()}`,
           {
