@@ -24,7 +24,7 @@ interface Post {
  *
  * @returns {JSX.Element} The ProfilePage component.
  */
-const ProfilePage: NextPage = () => {
+const ProfilePage: NextPage = (): JSX.Element => {
   const router = useRouter();
   const { data: session } = useSession();
   const [posts, setPosts] = useState<Post[]>([]);
