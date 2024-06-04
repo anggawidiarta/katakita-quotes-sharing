@@ -56,7 +56,6 @@ const Feed = () => {
       try {
         const response = await fetch("/api/post", {
           method: "GET",
-          cache: "no-cache",
         });
         if (!response.ok) {
           throw new Error("Failed to fetch posts");
