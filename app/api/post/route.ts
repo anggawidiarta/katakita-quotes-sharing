@@ -2,7 +2,7 @@ import { connectToDB } from "@/utils/database";
 import Post from "@/models/post";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (request: NextRequest): Promise<NextResponse> => {
+export const GET = async (_request: NextRequest): Promise<NextResponse> => {
   try {
     await connectToDB();
 
