@@ -29,15 +29,7 @@ export default function RootLayout(props: Props) {
           </div>
           <main className="app pt-5 pb-10">
             <Nav />
-            <Suspense
-              fallback={
-                <div className="flex justify-center items-stretch">
-                  Loading...
-                </div>
-              }
-            >
-              {props.children}
-            </Suspense>
+            {props.children}
           </main>
           <Footer />
         </Provider>
