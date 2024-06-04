@@ -11,7 +11,6 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
     });
   } catch (error) {
