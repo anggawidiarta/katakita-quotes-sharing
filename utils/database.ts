@@ -1,4 +1,4 @@
-import mongoose, { ConnectOptions, mongo } from "mongoose";
+import mongoose, { ConnectOptions } from "mongoose";
 
 let isConnected = false; // track the connection
 
