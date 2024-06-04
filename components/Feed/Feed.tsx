@@ -1,8 +1,8 @@
 "use client";
 
 import { ChangeEvent, useEffect, useState } from "react";
-import styles from "./Feed.module.scss";
-import PostCard from "../PostCard/PostCard";
+import styles from "@/components/Feed/Feed.module.scss";
+import PostCard from "@/components/PostCard/PostCard";
 import { useSession } from "next-auth/react";
 
 interface Post {
@@ -73,6 +73,9 @@ const Feed = () => {
       fetchPosts();
     }
   }, [session?.user.id]);
+
+  // test post
+  console.log(allPosts);
 
   const filterPost = (searchText: string): Post[] => {
     const regex = new RegExp(searchText, "i"); // 'i' flag for case-insensitive search

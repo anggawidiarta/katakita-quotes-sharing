@@ -1,4 +1,5 @@
 "use client";
+
 import Feed from "@/components/Feed/Feed";
 import { useSession } from "next-auth/react";
 import { capitalCase } from "capital-case";
