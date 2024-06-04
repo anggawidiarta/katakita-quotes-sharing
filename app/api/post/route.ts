@@ -6,10 +6,19 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
   try {
     await connectToDB();
 
-    const posts = await Post.find({creator:{$ne: null}}).populate("creator");
+    const posts = await Post.find({ creator: { $ne: null } }).populate(
+      "creator"
+    );
     return new NextResponse(JSON.stringify(posts), {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control":
+          "no-store, no-cache, must-revalidate, proxy-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     });
   } catch (error) {
     console.error("Error fetching posts:", error);
