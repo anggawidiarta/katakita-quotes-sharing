@@ -48,22 +48,24 @@ const Feed: React.FC = () => {
   const [searchedResults, setSearchedResults] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fetchPosts = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch("/api/post");
-      if (!response.ok) {
-        throw new Error("Failed to fetch posts");
-      }
-      const data: Post[] = await response.json();
-      setAllPosts(data);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
   useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/api/post", {
+          method: "GET",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch posts");
+        }
+        const data: Post[] = await response.json();
+        setAllPosts(data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchPosts();
   }, []);
 
