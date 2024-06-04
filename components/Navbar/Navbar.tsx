@@ -29,7 +29,7 @@ const Nav: React.FC = () => {
 
   return (
     <nav className="w-full mb-16 flex-between">
-      <Link href="/" className="flex gap-2 flex-center">
+      <a href="/" className="flex gap-2 flex-center">
         <Image
           src={"/assets/images/comment.png"}
           alt="Logo Banner"
@@ -38,7 +38,7 @@ const Nav: React.FC = () => {
           className="object-contain"
         />
         <p className="logo_text">KataKita</p>
-      </Link>
+      </a>
 
       {/* Desktop Navigation */}
       <div className="hidden sm:flex">
