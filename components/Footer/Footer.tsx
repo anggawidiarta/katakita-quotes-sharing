@@ -6,8 +6,6 @@ import React from "react";
 import SocialLinks from "./Social";
 
 const Footer: React.FC = () => {
-  // test usePathname as to make a conditional footer
-  const isProfile = usePathname() === "/profile";
   return (
     <footer className="relative z-20 bg-[rgba(253,208,28,0.75)]  mt-7">
       <div className="px-6 py-4 mx-auto sm:px-16 max-w-7xl md:py-8">
