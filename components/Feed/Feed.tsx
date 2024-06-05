@@ -59,12 +59,9 @@ const Feed = () => {
       try {
         // noStore();
         // router.refresh();
-        const response = await fetch(
-          `api/post?timestamp=${new Date().getTime()}`,
-          {
-            method: "GET",
-          }
-        );
+        const response = await fetch(`api/post`, {
+          method: "GET",
+        });
         const data: Post[] = await response.json();
         setAllPosts(data);
       } catch (error) {
