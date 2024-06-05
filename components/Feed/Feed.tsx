@@ -57,8 +57,6 @@ const Feed = () => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        // noStore();
-        // router.refresh();
         const response = await fetch(`api/post`, {
           method: "GET",
         });
