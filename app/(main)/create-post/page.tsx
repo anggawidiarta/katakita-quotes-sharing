@@ -1,7 +1,7 @@
 "use client";
 import Form from "@/components/Form/Form";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 interface Post {
@@ -43,6 +43,7 @@ const CreatePage = () => {
       });
 
       if (response.ok) {
+        router.prefetch("/");
         router.push("/");
       }
     } catch (error) {
