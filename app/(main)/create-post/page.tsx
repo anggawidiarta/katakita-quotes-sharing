@@ -43,7 +43,6 @@ const CreatePage = () => {
       });
 
       if (response.ok) {
-        router.prefetch("/");
         router.push("/");
       }
     } catch (error) {
