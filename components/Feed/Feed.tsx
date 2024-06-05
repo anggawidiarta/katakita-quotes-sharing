@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import styles from "@/components/Feed/Feed.module.scss";
 import PostCard from "@/components/PostCard/PostCard";
 import { useSession } from "next-auth/react";
@@ -42,7 +42,7 @@ const PostCardList: React.FC<PostCardListProps> = ({
   );
 };
 
-const Feed = () => {
+const Feed: React.FC = () => {
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const router = useRouter();
   const { data: session } = useSession();
