@@ -1,6 +1,8 @@
 {
-  "name": "share-prompts",
-  "version": "0.1.0",
+  "name": "katakita-project",
+  "author": "Angga Widiarta <https://github.com/anggawidiarta>",
+  "description": "A Quotes App",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
