@@ -5,6 +5,7 @@ import Provider from "@/components/Provider";
 import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
+  // TODO: add social media metadata
   title: "KataKita",
   icons: {
     icon: [
