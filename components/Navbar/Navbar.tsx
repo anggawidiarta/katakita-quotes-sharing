@@ -48,7 +48,7 @@ const Nav: React.FC = () => {
               />
             </clipPath>
           </defs>
-          <g clip-path="url(#8181b98e37)">
+          <g clipPath="url(#8181b98e37)">
             <path
               fill="#fdd01c"
               stroke="black"
