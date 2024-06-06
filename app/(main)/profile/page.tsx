@@ -87,14 +87,17 @@ const ProfilePage: NextPage = (): JSX.Element => {
   };
 
   return (
-    <Profile
-      name={"My"}
-      desc={"Welcome to your personalized profile page"}
-      data={posts}
-      loading={loading}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    />
+    <>
+      <title>{`${session?.user.name} Profile` || "KataKita"}</title>
+      <Profile
+        name={"My"}
+        desc={"Welcome to your personalized profile page"}
+        data={posts}
+        loading={loading}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+    </>
   );
 };
 

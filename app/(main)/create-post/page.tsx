@@ -53,13 +53,16 @@ const CreatePage = () => {
   };
 
   return (
-    <Form
-      type="Create"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={createPost}
-    />
+    <>
+      <title>Create Post</title>
+      <Form
+        type="Create"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={createPost}
+      />
+    </>
   );
 };
 

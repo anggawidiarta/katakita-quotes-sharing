@@ -66,14 +66,17 @@ const UserProfile: NextPage<UserProfileProps> = ({
   const handleDelete = async (post: any) => {};
 
   return (
-    <Profile
-      name={userName ?? ""}
-      desc={`Welcome to the vibrant and inspiring profile page of ${userName}, where you can discover their favorite quotes, wisdom, and heartfelt contributions.`}
-      data={userPosts}
-      loading={loading}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    />
+    <>
+      <title>{`${userName} Profile`}</title>
+      <Profile
+        name={userName ?? ""}
+        desc={`Welcome to the vibrant and inspiring profile page of ${userName}, where you can discover their favorite quotes, wisdom, and heartfelt contributions.`}
+        data={userPosts}
+        loading={loading}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+    </>
   );
 };
 

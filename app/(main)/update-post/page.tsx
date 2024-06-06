@@ -56,13 +56,16 @@ const EditPost = () => {
   };
 
   return (
-    <Form
-      post={post}
-      setPost={setPost}
-      type="Edit"
-      submitting={submitting}
-      handleSubmit={updatePost}
-    />
+    <>
+      <title>Update Post</title>
+      <Form
+        post={post}
+        setPost={setPost}
+        type="Edit"
+        submitting={submitting}
+        handleSubmit={updatePost}
+      />
+    </>
   );
 };
 
