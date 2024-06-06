@@ -1,8 +1,8 @@
 "use client";
 import Form from "@/components/Form/Form";
-import { useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface Post {
   text: string;

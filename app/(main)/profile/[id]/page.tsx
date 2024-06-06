@@ -24,7 +24,6 @@ const UserProfile: NextPage<UserProfileProps> = ({
   params,
 }: UserProfileProps): JSX.Element => {
   const router = useRouter();
-  const { data: session } = useSession();
   const searchParams = useSearchParams();
   const userName = searchParams.get("name");
   const [userPosts, setUserPosts] = useState([]);
@@ -63,7 +62,7 @@ const UserProfile: NextPage<UserProfileProps> = ({
     router.push(`/update-post?id=${post._id}`);
   };
 
-  const handleDelete = async (post: any) => {};
+  const handleDelete = async () => {};
 
   return (
     <>
