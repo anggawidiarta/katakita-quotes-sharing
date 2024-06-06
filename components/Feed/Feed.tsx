@@ -73,9 +73,6 @@ const Feed: React.FC = () => {
     }
   }, [router, session?.user.id]);
 
-  // test post
-  console.log(allPosts);
-
   const filterPost = (searchText: string): Post[] => {
     const regex = new RegExp(searchText, "i"); // 'i' flag for case-insensitive search
     return allPosts.filter(
