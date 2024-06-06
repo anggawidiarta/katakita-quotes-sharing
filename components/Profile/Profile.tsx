@@ -34,7 +34,6 @@ const Profile: React.FC<ProfileProps> = ({
   handleDelete,
 }) => {
   const { data: session } = useSession();
-
   return (
     <section className="w-full">
       <h1 className="text-left head_text !merriweather-bold">
