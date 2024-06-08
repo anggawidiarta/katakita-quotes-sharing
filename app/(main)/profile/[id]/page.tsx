@@ -67,7 +67,7 @@ const UserProfile: NextPage<UserProfileProps> = ({
   return (
     <>
       <title>
-        {`${userName}` ? `${userName} Profile` : "Profile | KataKita"}
+        {`${userName !== null || undefined}` ? `${userName} Profile` : "Profile | KataKita"}
       </title>
       <Profile
         name={userName ?? ""}

@@ -89,7 +89,7 @@ const ProfilePage: NextPage = (): JSX.Element => {
   return (
     <>
       <title>
-        {`${session?.user.name}`
+        {`${session?.user.name !== null || undefined}`
           ? `${session?.user.name} Profile`
           : "Profile | KataKita"}
       </title>
