@@ -88,11 +88,7 @@ const ProfilePage: NextPage = (): JSX.Element => {
 
   return (
     <>
-      <title>
-        {`${session?.user.name !== null || undefined}`
-          ? `${session?.user.name} Profile`
-          : "Profile | KataKita"}
-      </title>
+      <title>{`${session?.user.name ?? "Empty"} Profile | KataKita`}</title>
       <Profile
         name={"My"}
         desc={"Welcome to your personalized profile page"}
