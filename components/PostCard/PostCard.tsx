@@ -88,7 +88,7 @@ const PostCard: React.FC<PostCardProps> = ({
           />
 
           <div className="flex flex-col w-auto">
-            <h3 className=" text-gray-900 text-[16px] merriweather-bold max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-[85%] truncate tracking-wide">
+            <h3 className=" text-gray-900 text-[16px] merriweather-bold max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate tracking-wide">
               {capitalCase(post.creator.username) || ""}
             </h3>
             <p className=" text-gray-500 font-montserrat tracking-tight font-normal text-[12px] max-w-[10ch] 2xs:max-w-[15ch] xs:max-w-full truncate">
