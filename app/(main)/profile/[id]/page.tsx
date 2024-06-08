@@ -53,17 +53,6 @@ const UserProfile: NextPage<UserProfileProps> = ({
     }
   }, [params.id]);
 
-  /**
-   * Handles editing of a post.
-   *
-   * @param {Post} post - The post to be edited.
-   */
-  const handleEdit = (post: any) => {
-    router.push(`/update-post?id=${post._id}`);
-  };
-
-  const handleDelete = async () => {};
-
   return (
     <>
       <title>{`${userName ?? "Empty"} Profile | KataKita`}</title>
@@ -72,8 +61,6 @@ const UserProfile: NextPage<UserProfileProps> = ({
         desc={`Welcome to the vibrant and inspiring profile page of ${userName}, where you can discover their favorite quotes, wisdom, and heartfelt contributions.`}
         data={userPosts}
         loading={loading}
-        handleEdit={handleEdit}
-        handleDelete={handleDelete}
       />
     </>
   );
