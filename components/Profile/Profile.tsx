@@ -21,8 +21,8 @@ interface ProfileProps {
   desc: string;
   data: Post[];
   loading: boolean;
-  handleEdit: (post: Post) => void;
-  handleDelete: (post: Post) => void;
+  handleEdit?: (post: Post) => void;
+  handleDelete?: (post: Post) => void;
 }
 
 const Profile: React.FC<ProfileProps> = ({
