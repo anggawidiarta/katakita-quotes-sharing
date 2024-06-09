@@ -12,11 +12,11 @@ export const dynamic = "force-dynamic";
  * If an error occurs during the process, it logs the error and returns
  * a 500 status response.
  *
- * @param {NextRequest} request - The request object, not used in this handler.
+ * @param {NextRequest} _request - The request object, not used in this handler.
  *
  * @returns {Promise<NextResponse>} The response object containing the posts or an error message.
  */
-export const GET = async (request: NextRequest): Promise<NextResponse> => {
+export const GET = async (_request: NextRequest): Promise<NextResponse> => {
   try {
     // Connect to the database
     await connectToDB();
