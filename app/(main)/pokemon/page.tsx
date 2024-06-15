@@ -1,7 +1,8 @@
 "use client";
+import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 
-const Pokemon = () => {
+const Pokemon: NextPage = () => {
   const [allpost, setAllPost] = useState<any>([]);
   useEffect(() => {
     const fetchPost = async () => {
@@ -29,8 +30,10 @@ const Pokemon = () => {
     <div>
       page
       <ul>
-        {allpost.results.map((post:any,index:number) => (
-          <li key={post.name}>{index+1}. {post.name}</li>
+        {allpost.results.map((post: any, index: number) => (
+          <li key={post.name}>
+            {index + 1}. {post.name}
+          </li>
         ))}
       </ul>
     </div>
