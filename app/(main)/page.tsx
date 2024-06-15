@@ -24,8 +24,7 @@ const Home: NextPage = () => {
         )}
       </p>
       {session?.user ? (
-        // <Feed />
-        <Pokemon />
+        <Feed />
       ) : (
         <div>
           <p className="my-48 text-xl text-[#251609] font-semibold text-center capitalize font-montserrat drop-shadow-md">

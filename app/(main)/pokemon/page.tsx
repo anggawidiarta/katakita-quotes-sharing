@@ -13,25 +13,27 @@ const Pokemon: NextPage = () => {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
+              "cache-control": "force-dynamic",
             },
           }
         );
         const data = await response.json();
+        // console.log('dog');
         setAllPost(data);
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchPost();
   }, []);
-  console.log(allpost);
 
   return (
     <div>
       page
       <ul>
-        {allpost.results.map((post: any, index: number) => (
-          <li key={post.name}>
+        {allpost?.results?.map((post: any, index: number) => (
+          <li key={index}>
             {index + 1}. {post.name}
           </li>
         ))}
