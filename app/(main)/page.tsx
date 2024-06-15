@@ -4,6 +4,7 @@ import Feed from "@/components/Feed/Feed";
 import { useSession } from "next-auth/react";
 import { capitalCase } from "capital-case";
 import { NextPage } from "next";
+import Pokemon from "./pokemon/page";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
@@ -23,7 +24,8 @@ const Home: NextPage = () => {
         )}
       </p>
       {session?.user ? (
-        <Feed />
+        // <Feed />
+        <Pokemon />
       ) : (
         <div>
           <p className="my-48 text-xl text-[#251609] font-semibold text-center capitalize font-montserrat drop-shadow-md">
