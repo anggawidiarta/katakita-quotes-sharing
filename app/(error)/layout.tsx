@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "KataKita",
   icons: "/assets/icons/bad.png",
   description: "A Powerful Message App",
+  creator: "Angga Widiarta",
+  publisher: "Angga Widiarta",
+  authors: { name: "Angga Widiarta", url: "https://github.com/anggawidiarta" },
 };
 
 type Props = {
