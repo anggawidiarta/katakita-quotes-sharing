@@ -2,6 +2,7 @@
 import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 
+// this is just for testing
 const Pokemon: NextPage = () => {
   const [allpost, setAllPost] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -20,7 +21,6 @@ const Pokemon: NextPage = () => {
           }
         );
         const data = await response.json();
-        // console.log('dog');
         setAllPost(data);
       } catch (error) {
         console.log(error);
