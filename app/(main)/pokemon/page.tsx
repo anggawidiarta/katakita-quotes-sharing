@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 
 const Pokemon: NextPage = () => {
   const [allpost, setAllPost] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
           "https://pokeapi.co/api/v2/pokemon?limit=122&offset=0",
           {
@@ -22,6 +24,8 @@ const Pokemon: NextPage = () => {
         setAllPost(data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -31,13 +35,17 @@ const Pokemon: NextPage = () => {
   return (
     <div>
       page
-      <ul>
-        {allpost?.results?.map((post: any, index: number) => (
-          <li key={index}>
-            {index + 1}. {post.name}
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <ul>
+          {allpost.results.map((post: any, index: number) => (
+            <li key={index}>
+              {index + 1}. {post.name}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
