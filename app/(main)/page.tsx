@@ -4,7 +4,7 @@ import Feed from "@/components/Feed/Feed";
 import { useSession } from "next-auth/react";
 import { capitalCase } from "capital-case";
 import { NextPage } from "next";
-import Pokemon from "./pokemon/page";
+import Pokemon from "./_pokemon/page";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
